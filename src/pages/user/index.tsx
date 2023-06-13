@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState, } from 'react';
-import type { Dispatch, ChangeEvent } from 'react';
+import type { Dispatch, ChangeEvent, FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
     TableBody,
@@ -40,19 +40,27 @@ const columns: Column[] = [
     },
 ];
 
-export default function StickyHeadTable() {
+const UserTable: FC = () => {
     const data = useSelector((state: UserType) => state.User);
     console.log('data: ', data);
     const dispatch: Dispatch<any> = useDispatch();
     const [open, setOpen] = useState<boolean>(false);
-    const [updatedata, setUpdatedata] = useState({});
+    const [updatedata, setUpdatedata] = useState<InputData>({
+        name: '',
+        email: '',
+        status: ''
+    });
     const [page, setPage] = useState<number>(0);
     const [rowsPerPage, setRowsPerPage] = useState<number>(10);
 
     const handleModal = () => setOpen(true);
     const handleCloseModal = () => {
         setOpen(false);
-        setUpdatedata({});
+        setUpdatedata({
+            name: '',
+            email: '',
+            status: ''
+        });
     };
 
     const handleEditEpisode = (row: InputData) => {
@@ -163,3 +171,5 @@ export default function StickyHeadTable() {
         </>
     );
 }
+
+export default UserTable

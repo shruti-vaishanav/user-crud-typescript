@@ -1,10 +1,9 @@
-import react from 'react'
-import type { Dispatch, ChangeEvent } from 'react'
+import type { Dispatch, ChangeEvent, FC } from 'react'
 import { useEffect, useState } from "react";
 import { TextField, Box, Button, Grid, } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers, setUser, updateUser } from "../../service/action/userAction";
-import { InputData, userDataType, UserType } from '../../interfaces/user.interface';
+import { InputData, userDataType, UserType, ModalProps } from '../../interfaces/user.interface';
 
 const style = {
     position: 'absolute',
@@ -18,7 +17,8 @@ const style = {
     p: 4,
 };
 
-function UserModal({ updatedata, handleModal }: any) {
+const UserModal: FC<ModalProps> = ({ updatedata, handleModal }: ModalProps) => {
+
     const dispatch: Dispatch<any> = useDispatch();
     const data = useSelector((state: UserType) => state.User)
     console.log('state: ', data);

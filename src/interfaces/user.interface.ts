@@ -24,4 +24,9 @@ interface userReducerType {
 interface UserType {
     User: userReducerType
 }
-export { Column, userReducerType, UserType, userDataType, InputData };
+
+interface ModalProps {
+    updatedata: InputData;
+    handleModal: () => void;
+}
+export { Column, userReducerType, UserType, userDataType, InputData, ModalProps };
