@@ -1,2 +1,3 @@
-🔵 React,redux,Typescript
+🔵 React , Redux
+
 
